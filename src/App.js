@@ -1,10 +1,18 @@
 import React, { Component } from 'react'
+import List from './component/List'
+import Footer from './component/Footer'
+import Header from './component/Header'
+import './App.css'
 
 export default class App extends Component {
   render() {
     return (
-      <div>
-          <h2 style={{fontSize: '40px'}}>App...</h2>
+      <div className="todo-container">
+        <div className="todo-wrap">
+          <Header />
+          <List />
+          <Footer />
+        </div>
       </div>
     )
   }
