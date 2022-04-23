@@ -12,18 +12,28 @@ export default class App extends Component {
       { id: '003', name: '打游戏', done: false }
     ]
   }
-  addTodo = (todoObj) => { 
-      const {todos} = this.state
-      const newTodos = [todoObj,...todos]
-      this.setState({todos:newTodos})
+  addTodo = (todoObj) => {
+    const { todos } = this.state
+    const newTodos = [todoObj, ...todos]
+    this.setState({ todos: newTodos })
+  }
+  updateTodo = (id, done) => {
+    const { todos } = this.state
+    const newTodo = todos.map(todoObj => {
+      if (todoObj.id === id) {
+        return { ...todoObj, done }
+      }
+      return todoObj
+    })
+    this.setState({ todos: newTodo })
   }
   render() {
     const { todos } = this.state
     return (
       <div className="todo-container">
         <div className="todo-wrap">
-          <Header addTodo={this.addTodo}/>
-          <List todos={todos} />
+          <Header addTodo={this.addTodo} />
+          <List todos={todos} updateTodo={this.updateTodo} />
           <Footer />
         </div>
       </div>
